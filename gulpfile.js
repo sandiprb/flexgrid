@@ -1,10 +1,9 @@
 var gulp = require('gulp');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
-var uglify = require('gulp-uglify');
 var atImport = require('postcss-import');
 var rename = require('gulp-rename');
-
+var cssnano = require('gulp-cssnano');
 
 gulp.task('build', function() {
 	var processors = [
@@ -23,7 +22,13 @@ gulp.task('build', function() {
 	.pipe(gulp.dest('./dest/'))
 	});
 
+gulp.task('compress', ['build'] , function () {
+	return gulp.src('./dest/flexgrid.css')
+	.pipe(cssnano())
+	.pipe(rename({suffix: '.min'}))
+	.pipe(gulp.dest('./dest/'))
+	});
 
-gulp.task('default', ['build'] , function () {
+gulp.task('default', ['build', 'compress'] , function () {
 	gulp.watch(['./postcss/*.pcss'], ['build']);
 	});
