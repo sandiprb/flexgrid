@@ -19,7 +19,7 @@ gulp.task('build', function() {
 	];
 	return gulp.src('./postcss/[^_]*.pcss')
 	.pipe(postcss(processors))
-	.pipe( rename({extname: '.css'}) )
+	.pipe(rename({extname: '.css'}))
 	.pipe(gulp.dest('./dest/'))
 	});
 
