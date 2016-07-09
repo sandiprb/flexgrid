@@ -1,0 +1,6 @@
+{
+  "name": "Flexgrid",
+  "tagline": "Responsive CSS grid with css flexbox",
+  "body": "# flexgrid (WIP)\r\nResponsive CSS grid with css flexbox\r\n\r\n- [x] Large, Medium, Small & Mobile grids\r\n- [x] Offsets\r\n- [ ] Column grid layout \r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
