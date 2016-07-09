@@ -2,4 +2,4 @@
 Responsive CSS grid with css flexbox
 
 
-[x] create responsive grid layout
+-[x] create responsive grid layout
