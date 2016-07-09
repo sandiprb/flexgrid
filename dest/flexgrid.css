@@ -55,7 +55,12 @@
 .fx-col-xs-4,
 .fx-col-xs-3,
 .fx-col-xs-2,
-.fx-col-xs-1,
+.fx-col-xs-1{
+	padding-left: 12px;
+	padding-right: 12px;
+	min-height: 1px;
+}
+
 .fx-col-sm-12,
 .fx-col-sm-11,
 .fx-col-sm-10,
@@ -92,9 +97,13 @@
 .fx-col-lg-3,
 .fx-col-lg-2,
 .fx-col-lg-1{
+	/* other than media queries flex basis would always be 100% */
+	-ms-flex-preferred-size:100%;
+	    flex-basis:100%;
 	padding-left: 12px;
 	padding-right: 12px;
 	min-height: 1px;
+
 }
 
 /* columns xs */
