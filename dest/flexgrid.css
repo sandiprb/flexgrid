@@ -36,8 +36,8 @@
 	    flex-direction: row;
 	-ms-flex-wrap: wrap;
 	    flex-wrap: wrap;
-	-ms-flex: 1 0 0;
-	    flex: 1 0 0;
+	-ms-flex: 1 0 auto;
+	    flex: 1 0 auto;
 	margin-left: -12px;
 	margin-right: -12px;
 }
