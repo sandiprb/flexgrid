@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var gzip = require('gulp-gzip');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var atImport = require('postcss-import');
@@ -8,9 +9,7 @@ var connect = require('gulp-connect');
 
 //global pcss processes
 var processors = [
-atImport({
-	path: ['./postcss/', './demo/pcss/']
-	}),
+atImport({path: ['./postcss/', './demo/pcss/']}),
 require('postcss-mixins'),
 require('postcss-simple-vars'),
 require('postcss-nested'),
@@ -24,13 +23,10 @@ gulp.task('build', function() {
 	.pipe(postcss(processors))
 	.pipe(rename({extname: '.css'}))
 	.pipe(gulp.dest('./dest/'))
-	});
-
-//flexgrid compress
-gulp.task('compress', ['build'] , function () {
-	return gulp.src('./dest/flexgrid.css')
 	.pipe(cssnano())
 	.pipe(rename({suffix: '.min'}))
+	.pipe(gulp.dest('./dest/'))
+	.pipe(gzip())
 	.pipe(gulp.dest('./dest/'))
 	});
 
@@ -56,6 +52,6 @@ gulp.task('watch:demo', ['build', 'demo', 'livereload'] , function () {
 		['build', 'demo']);
 	});
 
-gulp.task('default', ['build', 'compress'] , function () {
+gulp.task('default', ['build'] , function () {
 	gulp.watch(['./postcss/*.pcss'], ['build']);
 	});
