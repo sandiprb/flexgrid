@@ -11,10 +11,16 @@ var connect = require('gulp-connect');
 var processors = [
 atImport({path: ['./postcss/', './demo/pcss/']}),
 require('postcss-mixins'),
+require('postcss-each'),
+require('postcss-for'),
+require('postcss-simple-extend'),
 require('postcss-simple-vars'),
 require('postcss-nested'),
+require('postcss-calc'),
 require('css-mqpacker'),
+require('postcss-discard-empty'),
 autoprefixer({browsers: ['last 2 version']})
+
 ];
 
 //flexgrid build

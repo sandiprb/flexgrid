@@ -8,18 +8,12 @@
 	}
 }
 
-.container-fluid{
-	margin-left: auto;
-	margin-right: auto;
-	padding-left: $grid-gutter;
-	padding-right: $grid-gutter;
-}
-
+.container-fluid,
 .container{
 	margin-left: auto;
 	margin-right: auto;
-	padding-left: $grid-gutter;
-	padding-right: $grid-gutter;
+	padding-left: calc($grid-gutter / 2);
+	padding-right: calc($grid-gutter / 2);
 }
 
 @media (min-width: $screen-sm){
@@ -46,427 +40,65 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	flex: 1 0 auto;
-	margin-left: -$grid-gutter;
-	margin-right: -$grid-gutter;
+	margin-left: -calc($grid-gutter / 2);
+	margin-right: -calc($grid-gutter / 2);
 }
 
-/* columns all */
-.fx-col-xs-12,
-.fx-col-xs-11,
-.fx-col-xs-10,
-.fx-col-xs-9,
-.fx-col-xs-8,
-.fx-col-xs-7,
-.fx-col-xs-6,
-.fx-col-xs-5,
-.fx-col-xs-4,
-.fx-col-xs-3,
-.fx-col-xs-2,
-.fx-col-xs-1{
-	padding-left: $grid-gutter;
-	padding-right: $grid-gutter;
+@define-placeholder generic-col-xs{
+	padding-left: calc($grid-gutter / 2);
+	padding-right: calc($grid-gutter / 2);
 	min-height: 1px;
 }
 
-.fx-col-sm-12,
-.fx-col-sm-11,
-.fx-col-sm-10,
-.fx-col-sm-9,
-.fx-col-sm-8,
-.fx-col-sm-7,
-.fx-col-sm-6,
-.fx-col-sm-5,
-.fx-col-sm-4,
-.fx-col-sm-3,
-.fx-col-sm-2,
-.fx-col-sm-1,
-.fx-col-md-12,
-.fx-col-md-11,
-.fx-col-md-10,
-.fx-col-md-9,
-.fx-col-md-8,
-.fx-col-md-7,
-.fx-col-md-6,
-.fx-col-md-5,
-.fx-col-md-4,
-.fx-col-md-3,
-.fx-col-md-2,
-.fx-col-md-1,
-.fx-col-lg-12,
-.fx-col-lg-11,
-.fx-col-lg-10,
-.fx-col-lg-9,
-.fx-col-lg-8,
-.fx-col-lg-7,
-.fx-col-lg-6,
-.fx-col-lg-5,
-.fx-col-lg-4,
-.fx-col-lg-3,
-.fx-col-lg-2,
-.fx-col-lg-1{
-	/* other than media queries flex basis would always be 100% */
-	flex-basis:100%;
-	padding-left: $grid-gutter;
-	padding-right: $grid-gutter;
+/* create xs columns */
+@each $val, $i in (12,11,10,9,8,7,6,5,4,3,2,1){
+	.fx-col-xs-$(val) {
+		flex-basis: calc((calc(12 - $i) * 100) / 12)%;
+		width: calc((calc(12 - $i) * 100) / 12)%;
+		@extend generic-col-xs;
+	}
+}
+@each $val, $i in (12,11,10,9,8,7,6,5,4,3,2,1){
+	.fx-col-xs-offset-$(val) {
+		margin-left: calc((calc(12 - $i) * 100) / 12)%;
+	}
+}
+
+@define-placeholder generic-col{
+	flex: 1 0 100%;
+	padding-left: calc($grid-gutter / 2);
+	padding-right: calc($grid-gutter / 2);
 	min-height: 1px;
-
 }
 
-/* columns xs */
-.fx-col-xs-12{
-	flex-basis: 100%;
-	max-width: 100%;
-}
-.fx-col-xs-11{
-	flex-basis: 91.66666667%;
-	max-width: 91.66666667%;
-}
-.fx-col-xs-10{
-	flex-basis: 83.33333333%;
-	max-width: 83.33333333%;
-}
-.fx-col-xs-9{
-	flex-basis: 75%;
-	max-width: 75%;
-}
-.fx-col-xs-8{
-	flex-basis: 66.66666667%;
-	max-width: 66.66666667%;
-}
-.fx-col-xs-7{
-	flex-basis: 58.33333333%;
-	max-width: 58.33333333%;
-}
-.fx-col-xs-6{
-	flex-basis: 50%;
-	max-width: 50%;
-}
-.fx-col-xs-5{
-	flex-basis: 41.66666667%;
-	max-width: 41.66666667%;
-}
-.fx-col-xs-4{
-	flex-basis: 33.33333333%;
-	max-width: 33.33333333%;
-}
-.fx-col-xs-3{
-	flex-basis: 25%;
-	max-width: 25%;
-}
-.fx-col-xs-2{
-	flex-basis: 16.66666667%;
-	max-width: 16.66666667%;
-}
-.fx-col-xs-1{
-	flex-basis: 8.33333333%;
-	max-width: 8.33333333%;
-}
-/* offset */
-.fx-col-offset-xs-12{
-	margin-left: 100%;
-}
-.fx-col-offset-xs-11{
-	margin-left: 91.66666667%;
-}
-.fx-col-offset-xs-10{
-	margin-left: 83.33333333%;
-}
-.fx-col-offset-xs-9{
-	margin-left: 75%;
-}
-.fx-col-offset-xs-8{
-	margin-left: 66.66666667%;
-}
-.fx-col-offset-xs-7{
-	margin-left: 58.33333333%;
-}
-.fx-col-offset-xs-6{
-	margin-left: 50%;
-}
-.fx-col-offset-xs-5{
-	margin-left: 41.66666667%;
-}
-.fx-col-offset-xs-4{
-	margin-left: 33.33333333%;
-}
-.fx-col-offset-xs-3{
-	margin-left: 25%;
-}
-.fx-col-offset-xs-2{
-	margin-left: 16.66666667%;
-}
-.fx-col-offset-xs-1{
-	margin-left: 8.33333333%;
-}
 
-/* column sm */
-@media (min-width: $screen-sm){
-	.fx-col-sm-12{
-		flex-basis: 100%;
-		max-width: 100%;
+/* mixin to create size based grid columns / offset classes-
+*  with respective  media query
+*  @param {$media : screen resolution}
+*  @param {$col : column name sm/md/lg}
+*/
+@define-mixin create-col $media, $col {
+	@media (min-width: $media){
+		@each $val, $i in (12,11,10,9,8,7,6,5,4,3,2,1){
+			.fx-col-$(col)-$(val) {
+				flex-basis: calc((calc(12 - $i) * 100) / 12)%;
+				width: calc((calc(12 - $i) * 100) / 12)%;
+			}
+		}
+		@each $val, $i in (12,11,10,9,8,7,6,5,4,3,2,1){
+			.fx-col-$(col)-offset-$(val) {
+				margin-left: calc((calc(12 - $i) * 100) / 12)%;
+			}
+		}
 	}
-	.fx-col-sm-11{
-		flex-basis: 91.66666667%;
-		max-width: 91.66666667%;
-	}
-	.fx-col-sm-10{
-		flex-basis: 83.33333333%;
-		max-width: 83.33333333%;
-	}
-	.fx-col-sm-9{
-		flex-basis: 75%;
-		max-width: 75%;
-	}
-	.fx-col-sm-8{
-		flex-basis: 66.66666667%;
-		max-width: 66.66666667%;
-	}
-	.fx-col-sm-7{
-		flex-basis: 58.33333333%;
-		max-width: 58.33333333%;
-	}
-	.fx-col-sm-6{
-		flex-basis: 50%;
-		max-width: 50%;
-	}
-	.fx-col-sm-5{
-		flex-basis: 41.66666667%;
-		max-width: 41.66666667%;
-	}
-	.fx-col-sm-4{
-		flex-basis: 33.33333333%;
-		max-width: 33.33333333%;
-	}
-	.fx-col-sm-3{
-		flex-basis: 25%;
-		max-width: 25%;
-	}
-	.fx-col-sm-2{
-		flex-basis: 16.66666667%;
-		max-width: 16.66666667%;
-	}
-	.fx-col-sm-1{
-		flex-basis: 8.33333333%;
-		max-width: 8.33333333%;
-	}
-
-	/* offset */
-	.fx-col-offset-sm-12{
-		margin-left: 100%;
-	}
-	.fx-col-offset-sm-11{
-		margin-left: 91.66666667%;
-	}
-	.fx-col-offset-sm-10{
-		margin-left: 83.33333333%;
-	}
-	.fx-col-offset-sm-9{
-		margin-left: 75%;
-	}
-	.fx-col-offset-sm-8{
-		margin-left: 66.66666667%;
-	}
-	.fx-col-offset-sm-7{
-		margin-left: 58.33333333%;
-	}
-	.fx-col-offset-sm-6{
-		margin-left: 50%;
-	}
-	.fx-col-offset-sm-5{
-		margin-left: 41.66666667%;
-	}
-	.fx-col-offset-sm-4{
-		margin-left: 33.33333333%;
-	}
-	.fx-col-offset-sm-3{
-		margin-left: 25%;
-	}
-	.fx-col-offset-sm-2{
-		margin-left: 16.66666667%;
-	}
-	.fx-col-offset-sm-1{
-		margin-left: 8.33333333%;
+	@for $i from 1 to 12{
+		.fx-col-$(col)-$(i) {
+			@extend generic-col;
+		}
 	}
 }
 
-/* column md */
-@media (min-width: $screen-md){
-	.fx-col-md-12{
-		flex-basis: 100%;
-		max-width: 100%;
-	}
-	.fx-col-md-11{
-		flex-basis: 91.66666667%;
-		max-width: 91.66666667%;
-	}
-	.fx-col-md-10{
-		flex-basis: 83.33333333%;
-		max-width: 83.33333333%;
-	}
-	.fx-col-md-9{
-		flex-basis: 75%;
-		max-width: 75%;
-	}
-	.fx-col-md-8{
-		flex-basis: 66.66666667%;
-		max-width: 66.66666667%;
-	}
-	.fx-col-md-7{
-		flex-basis: 58.33333333%;
-		max-width: 58.33333333%;
-	}
-	.fx-col-md-6{
-		flex-basis: 50%;
-		max-width: 50%;
-	}
-	.fx-col-md-5{
-		flex-basis: 41.66666667%;
-		max-width: 41.66666667%;
-	}
-	.fx-col-md-4{
-		flex-basis: 33.33333333%;
-		max-width: 33.33333333%;
-	}
-	.fx-col-md-3{
-		flex-basis: 25%;
-		max-width: 25%;
-	}
-	.fx-col-md-2{
-		flex-basis: 16.66666667%;
-		max-width: 16.66666667%;
-	}
-	.fx-col-md-1{
-		flex-basis: 8.33333333%;
-		max-width: 8.33333333%;
-	}
-	/* offset */
-	.fx-col-offset-md-12{
-		margin-left: 100%;
-	}
-	.fx-col-offset-md-11{
-		margin-left: 91.66666667%;
-	}
-	.fx-col-offset-md-10{
-		margin-left: 83.33333333%;
-	}
-	.fx-col-offset-md-9{
-		margin-left: 75%;
-	}
-	.fx-col-offset-md-8{
-		margin-left: 66.66666667%;
-	}
-	.fx-col-offset-md-7{
-		margin-left: 58.33333333%;
-	}
-	.fx-col-offset-md-6{
-		margin-left: 50%;
-	}
-	.fx-col-offset-md-5{
-		margin-left: 41.66666667%;
-	}
-	.fx-col-offset-md-4{
-		margin-left: 33.33333333%;
-	}
-	.fx-col-offset-md-3{
-		margin-left: 25%;
-	}
-	.fx-col-offset-md-2{
-		margin-left: 16.66666667%;
-	}
-	.fx-col-offset-md-1{
-		margin-left: 8.33333333%;
-	}
-}
-
-/* column lg */
-@media (min-width: $screen-lg){
-	.fx-col-lg-12{
-		flex-basis: 100%;
-		max-width: 100%;
-	}
-	.fx-col-lg-12{
-		flex-basis: 100%;
-		max-width: 100%;
-	}
-	.fx-col-lg-11{
-		flex-basis: 91.66666667%;
-		max-width: 91.66666667%;
-	}
-	.fx-col-lg-10{
-		flex-basis: 83.33333333%;
-		max-width: 83.33333333%;
-	}
-	.fx-col-lg-9{
-		flex-basis: 75%;
-		max-width: 75%;
-	}
-	.fx-col-lg-8{
-		flex-basis: 66.66666667%;
-		max-width: 66.66666667%;
-	}
-	.fx-col-lg-7{
-		flex-basis: 58.33333333%;
-		max-width: 58.33333333%;
-	}
-	.fx-col-lg-6{
-		flex-basis: 50%;
-		max-width: 50%;
-	}
-	.fx-col-lg-5{
-		flex-basis: 41.66666667%;
-		max-width: 41.66666667%;
-	}
-	.fx-col-lg-4{
-		flex-basis: 33.33333333%;
-		max-width: 33.33333333%;
-	}
-	.fx-col-lg-3{
-		flex-basis: 25%;
-		max-width: 25%;
-	}
-	.fx-col-lg-2{
-		flex-basis: 16.66666667%;
-		max-width: 16.66666667%;
-	}
-	.fx-col-lg-1{
-		flex-basis: 8.33333333%;
-		max-width: 8.33333333%;
-	}
-	/* offset */
-	.fx-col-offset-lg-12{
-		margin-left: 100%;
-	}
-	.fx-col-offset-lg-11{
-		margin-left: 91.66666667%;
-	}
-	.fx-col-offset-lg-10{
-		margin-left: 83.33333333%;
-	}
-	.fx-col-offset-lg-9{
-		margin-left: 75%;
-	}
-	.fx-col-offset-lg-8{
-		margin-left: 66.66666667%;
-	}
-	.fx-col-offset-lg-7{
-		margin-left: 58.33333333%;
-	}
-	.fx-col-offset-lg-6{
-		margin-left: 50%;
-	}
-	.fx-col-offset-lg-5{
-		margin-left: 41.66666667%;
-	}
-	.fx-col-offset-lg-4{
-		margin-left: 33.33333333%;
-	}
-	.fx-col-offset-lg-3{
-		margin-left: 25%;
-	}
-	.fx-col-offset-lg-2{
-		margin-left: 16.66666667%;
-	}
-	.fx-col-offset-lg-1{
-		margin-left: 8.33333333%;
-	}
-}
+/* create columns */
+@mixin create-col $screen-sm, sm;
+@mixin create-col $screen-md, md;
+@mixin create-col $screen-lg, lg;
