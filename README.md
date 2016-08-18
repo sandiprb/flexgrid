@@ -1,4 +1,4 @@
-# flexgrid (WIP)
+# flexgrid
 Responsive CSS grid with css flexbox
 
 **To Do** 
